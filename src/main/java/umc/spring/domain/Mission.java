@@ -1,8 +1,8 @@
 package umc.spring.domain;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import lombok.*;
-import umc.spring.domain.base.BaseEntity;
+import umc.spring.domain.common.BaseEntity;
 import umc.spring.domain.mapping.MemberMission;
 
 import java.time.LocalDate;
@@ -24,6 +24,7 @@ public class Mission extends BaseEntity {
 
     private LocalDate deadline;
 
+    @Column(nullable = false, length = 50)
     private String missionSpec;
 
     @ManyToOne(fetch = FetchType.LAZY)

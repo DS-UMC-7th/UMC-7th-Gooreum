@@ -1,6 +1,6 @@
-package umc.spring.domain.base;
+package umc.spring.domain.common;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
