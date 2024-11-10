@@ -5,6 +5,7 @@ import lombok.*;
 import umc.spring.domain.common.BaseEntity;
 
 @Entity
+@Setter
 @Getter
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
