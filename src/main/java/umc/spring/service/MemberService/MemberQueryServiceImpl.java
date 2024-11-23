@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import umc.spring.domain.Member;
 import umc.spring.repository.MemberRepository.MemberRepository;
+import umc.spring.web.dto.MemberRequestDTO;
 
 import java.util.List;
 import java.util.Optional;
