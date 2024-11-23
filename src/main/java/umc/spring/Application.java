@@ -73,10 +73,6 @@ public class Application {
 			String body = "친절하고 음식이 맛있어요.";
 			Float score2 = 4.5f;
 
-			System.out.println("Adding review with title: " + title);
-			reviewService.addReview(title, body, score2, member2, store);
-			System.out.println("Review added successfully.");
-
 			// 미션 조회
 			MissionQueryService missionQueryService = context.getBean(MissionQueryService.class);
 
@@ -85,21 +81,21 @@ public class Application {
 			String region = null;
 			System.out.println("Executing findMissionWithStatusAndDeadline with lastCursorDeadline: " + lastCursorDeadline);
 
-			List<Tuple> missions = missionQueryService.getMissionsWithStatusAndDeadline(lastCursorDeadline, region);
-			System.out.println("Number of missions fetched: " + missions.size());
-			// 미션 결과 출력
-			missions.forEach(tuple -> {
-				String storeName = tuple.get(0, String.class);  // store.name
-				Integer reward = tuple.get(1, Integer.class);   // reward
-				String missionSpec = tuple.get(2, String.class); // missionSpec
-				String status = tuple.get(3, String.class);     // status
-
-				System.out.println("Store Name: " + storeName);
-				System.out.println("Reward: " + reward);
-				System.out.println("Mission Spec: " + missionSpec);
-				System.out.println("Status: " + status);
-				System.out.println("-----");
-			});
+//			List<Tuple> missions = missionQueryService.getMissionsWithStatusAndDeadline(lastCursorDeadline, region);
+//			System.out.println("Number of missions fetched: " + missions.size());
+//			// 미션 결과 출력
+//			missions.forEach(tuple -> {
+//				String storeName = tuple.get(0, String.class);  // store.name
+//				Integer reward = tuple.get(1, Integer.class);   // reward
+//				String missionSpec = tuple.get(2, String.class); // missionSpec
+//				String status = tuple.get(3, String.class);     // status
+//
+//				System.out.println("Store Name: " + storeName);
+//				System.out.println("Reward: " + reward);
+//				System.out.println("Mission Spec: " + missionSpec);
+//				System.out.println("Status: " + status);
+//				System.out.println("-----");
+//			});
 
 	};
 }}

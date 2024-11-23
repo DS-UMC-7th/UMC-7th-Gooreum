@@ -3,10 +3,12 @@ package umc.spring.repository.MissionRepository;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.querydsl.core.Tuple;
+import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import umc.spring.domain.*;
 import umc.spring.domain.mapping.QMemberMission;
+import umc.spring.web.dto.MissionRequestDTO;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -22,6 +24,7 @@ public class MissionRepositoryImpl implements MissionRepositoryCustom {
     private final QStore store = QStore.store;
     private final QMemberMission memberMission = QMemberMission.memberMission;
 
+/*
     @Override
     public List<Tuple> findMissionWithStatusAndDeadline(LocalDate lastCursorDeadline, String region) {
 
@@ -48,5 +51,22 @@ public class MissionRepositoryImpl implements MissionRepositoryCustom {
                 .orderBy(mission.deadline.asc())
                 .limit(15)
                 .fetch();
+    }
+*/
+
+    private final EntityManager entityManager;
+
+    @Override
+    public void insertMission(Store store, MissionRequestDTO missionRequestDTO) {
+        // Mission 엔티티 빌더 사용하여 미션 생성
+        Mission mission = Mission.builder()
+                .reward(missionRequestDTO.getReward())
+                .deadline(missionRequestDTO.getDeadline())
+                .missionSpec(missionRequestDTO.getMissionSpec())
+                .store(store) // 가게와 연결
+                .build();
+
+        // 미션 저장
+        entityManager.persist(mission);
     }
 }
